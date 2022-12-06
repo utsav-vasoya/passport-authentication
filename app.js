@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
-
+const cors = require('cors');
 // Passport Config
 require('./config/passport')(passport);
 
@@ -16,7 +16,7 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch(err => console.log(err))
 app.use(expresslayout);
 app.set('view engine', 'ejs')
-
+app.use(cors());
 app.use(express.urlencoded({ extended: false }))
 
 // Express session
